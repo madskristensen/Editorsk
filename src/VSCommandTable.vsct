@@ -239,6 +239,11 @@
         <VisibilityItem guid="guidLinesCmdSet" id="LinesMenu" context="GUID_TextEditorFactory" />
     </VisibilityConstraints>
 
+    <KeyBindings>
+        <KeyBinding guid="guidLinesCmdSet" id="cmdSortAsc" mod1="Alt" key1="3" editor="guidVSStd97"/>
+        <KeyBinding guid="guidLinesCmdSet" id="cmdSortDesc" mod1="Alt" key1="4" editor="guidVSStd97"/>
+    </KeyBindings>
+
     <Symbols>
         <GuidSymbol name="guidPackage" value="{3dc4f9d3-0070-4393-8c0b-c3952e944624}" />
 

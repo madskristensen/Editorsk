@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel.Design;
-using System.Diagnostics.CodeAnalysis;
 using System.Web;
 using EnvDTE;
 using EnvDTE80;

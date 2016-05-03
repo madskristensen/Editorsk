@@ -102,6 +102,8 @@
 
             <Button guid="guidEncodingCmdSet" id="cmdJavaScriptEncode" priority="0x0101" type="Button">
                 <Parent guid="guidEncodingCmdSet" id="JavaScriptEncodingMenuGroup" />
+                <Icon guid="ImageCatalogGuid" id="JSScript"/>
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>JavaScript String Encode</ButtonText>
@@ -228,6 +230,31 @@
             <Parent guid="JsonCmdSet" id="JsonContextMenu"/>
         </CommandPlacement>
     </CommandPlacements>
+
+    <VisibilityConstraints>
+        <!--Encoding-->
+        <VisibilityItem guid="guidEncodingCmdSet" id="cmdHtmlEncode" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidEncodingCmdSet" id="cmdHtmlDecode" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidEncodingCmdSet" id="cmdUrlEncode" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidEncodingCmdSet" id="cmdUrlDecode" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidEncodingCmdSet" id="cmdJavaScriptEncode" context="GUID_TextEditorFactory" />
+
+        <!--Transform-->
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdTitleCaseTransform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdReverseTransform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdNormalizeTransform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdMd5Transform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdSha1Transform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdSha256Transform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdSha384Transform" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="cmdSha512Transform" context="GUID_TextEditorFactory" />
+
+        <!--Lines-->
+        <VisibilityItem guid="guidLinesCmdSet" id="cmdSortAsc" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidLinesCmdSet" id="cmdSortDesc" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidLinesCmdSet" id="cmdRemoveDuplicateLines" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidLinesCmdSet" id="cmdRemoveEmptyLines" context="GUID_TextEditorFactory" />
+    </VisibilityConstraints>
 
     <Symbols>
         <GuidSymbol name="guidPackage" value="{3dc4f9d3-0070-4393-8c0b-c3952e944624}" />

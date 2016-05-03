@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <Extern href="stdidcmd.h"/>
+    <Extern href="vsshlids.h"/>
+
+    <Commands package="guidPackage">
+        <Menus>
+            <Menu guid="guidEncodingCmdSet" id="EncodeMenu" priority="0x001" type="Menu">
+                <Parent guid="guidTopMenu" id="TopMenu" />
+                <Strings>
+                    <ButtonText>Encode Selection</ButtonText>
+                </Strings>
+            </Menu>
+            <Menu guid="guidTransformCmdSet" id="TransformMenu" priority="0x002" type="Menu">
+                <Parent guid="guidTopMenu" id="TopMenu" />
+                <Strings>
+                    <ButtonText>Transform Selection</ButtonText>
+                </Strings>
+            </Menu>
+            <Menu guid="guidLinesCmdSet" id="LinesMenu" priority="0x003" type="Menu">
+                <Parent guid="guidTopMenu" id="TopMenu" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Selected Lines</ButtonText>
+                </Strings>
+            </Menu>
+        </Menus>
+
+        <Groups>
+            <Group guid="guidTopMenu" id="TopMenu" priority="0x001" />
+
+            <!--Encoding-->
+            <Group guid="guidEncodingCmdSet" id="HtmlEncodingMenuGroup" priority="0x0002">
+                <Parent guid="guidEncodingCmdSet" id="EncodeMenu"/>
+            </Group>
+            <Group guid="guidEncodingCmdSet" id="UrlEncodingMenuGroup" priority="0x0003">
+                <Parent guid="guidEncodingCmdSet" id="EncodeMenu"/>
+            </Group>
+            <Group guid="guidEncodingCmdSet" id="JavaScriptEncodingMenuGroup" priority="0x0004">
+                <Parent guid="guidEncodingCmdSet" id="EncodeMenu"/>
+            </Group>
+
+            <!--Transform-->
+            <Group guid="guidTransformCmdSet" id="CasingTransformMenuGroup" priority="0x0001">
+                <Parent guid="guidTransformCmdSet" id="TransformMenu"/>
+            </Group>
+            <Group guid="guidTransformCmdSet" id="MiscTransformMenuGroup" priority="0x0002">
+                <Parent guid="guidTransformCmdSet" id="TransformMenu"/>
+            </Group>
+            <Group guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" priority="0x0003">
+                <Parent guid="guidTransformCmdSet" id="TransformMenu"/>
+            </Group>
+
+            <!--Lines-->
+            <Group guid="guidLinesCmdSet" id="LinesMenuGroup" priority="0x0002">
+                <Parent guid="guidLinesCmdSet" id="LinesMenu"/>
+            </Group>
+        </Groups>
+
+        <Buttons>
+            <Button guid="guidEncodingCmdSet" id="cmdHtmlEncode" priority="0x0101" type="Button">
+                <Parent guid="guidEncodingCmdSet" id="HtmlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>HTML Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEncodingCmdSet" id="cmdAttrEncode" priority="0x0102" type="Button">
+                <Parent guid="guidEncodingCmdSet" id="HtmlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>HTML Attribute Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEncodingCmdSet" id="cmdHtmlDecode" priority="0x0103" type="Button">
+                <Parent guid="guidEncodingCmdSet" id="HtmlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>HTML Decode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEncodingCmdSet" id="cmdUrlEncode" priority="0x0101" type="Button">
+                <Parent guid="guidEncodingCmdSet" id="UrlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>URL Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEncodingCmdSet" id="cmdUrlDecode" priority="0x0103" type="Button">
+                <Parent guid="guidEncodingCmdSet" id="UrlEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>URL Decode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidEncodingCmdSet" id="cmdJavaScriptEncode" priority="0x0101" type="Button">
+                <Parent guid="guidEncodingCmdSet" id="JavaScriptEncodingMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>JavaScript String Encode</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdTitleCaseTransform" priority="0x0103" type="Button">
+                <Parent guid="guidTransformCmdSet" id="CasingTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>To Title Case</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdReverseTransform" priority="0x0104" type="Button">
+                <Parent guid="guidTransformCmdSet" id="MiscTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Reverse</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdNormalizeTransform" priority="0x0105" type="Button">
+                <Parent guid="guidTransformCmdSet" id="MiscTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Diacritics</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdMd5Transform" priority="0x0105" type="Button">
+                <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>MD5</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdSha1Transform" priority="0x0105" type="Button">
+                <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-1</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdSha256Transform" priority="0x0105" type="Button">
+                <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-256</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdSha384Transform" priority="0x0105" type="Button">
+                <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-384</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidTransformCmdSet" id="cmdSha512Transform" priority="0x0105" type="Button">
+                <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>SHA-512</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidLinesCmdSet" id="cmdSortAsc" priority="0x0105" type="Button">
+                <Parent guid="guidLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Sort Ascending</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidLinesCmdSet" id="cmdSortDesc" priority="0x0106" type="Button">
+                <Parent guid="guidLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Sort Descending</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="guidLinesCmdSet" id="cmdRemoveDuplicateLines" priority="0x0106" type="Button">
+                <Parent guid="guidLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Duplicate Lines</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidLinesCmdSet" id="cmdRemoveEmptyLines" priority="0x0106" type="Button">
+                <Parent guid="guidLinesCmdSet" id="LinesMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Remove Empty Lines</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+    </Commands>
+
+    <CommandPlacements>
+        <CommandPlacement guid="guidTopMenu" id="TopMenu" priority="0x0300">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_EDIT"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidTopMenu" id="TopMenu" priority="0x0300">
+            <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidTopMenu" id="TopMenu" priority="0x0300">
+            <Parent guid="CssCmdSet" id="CssContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidTopMenu" id="TopMenu" priority="0x0300">
+            <Parent guid="HtmlCmdSet" id="htmlContextMenu"/>
+        </CommandPlacement>
+        <CommandPlacement guid="guidTopMenu" id="TopMenu" priority="0x0300">
+            <Parent guid="JsonCmdSet" id="JsonContextMenu"/>
+        </CommandPlacement>
+    </CommandPlacements>
+
+    <Symbols>
+        <GuidSymbol name="guidPackage" value="{3dc4f9d3-0070-4393-8c0b-c3952e944624}" />
+
+        <GuidSymbol name="guidTopMenu" value="{f321cac5-e101-459b-b24e-ba72ad25a2f3}">
+            <IDSymbol name="TopMenu" value="0x3001" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidEncodingCmdSet" value="{02af2694-ed70-4c77-b1ab-e1ecb5eda6e7}">
+            <IDSymbol name="EncodeMenu" value="0x0100" />
+            <IDSymbol name="HtmlEncodingMenuGroup" value="0x0110" />
+            <IDSymbol name="JavaScriptEncodingMenuGroup" value="0x0120" />
+            <IDSymbol name="UrlEncodingMenuGroup" value="0x0130" />
+
+            <IDSymbol name="cmdHtmlEncode" value="0x0102" />
+            <IDSymbol name="cmdHtmlDecode" value="0x0103" />
+            <IDSymbol name="cmdUrlEncode" value="0x0106" />
+            <IDSymbol name="cmdUrlDecode" value="0x0107" />
+            <IDSymbol name="cmdJavaScriptEncode" value="0x0108" />
+            <IDSymbol name="cmdAttrEncode" value="0x0109" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidTransformCmdSet" value="{f4c95200-781f-4ca3-b2c6-e6f444368df8}">
+            <IDSymbol name="TransformMenu" value="0x0100" />
+            <IDSymbol name="CasingTransformMenuGroup" value="0x0110" />
+            <IDSymbol name="MiscTransformMenuGroup" value="0x0120" />
+            <IDSymbol name="CryptoTransformMenuGroup" value="0x0130" />
+
+            <IDSymbol name="cmdTitleCaseTransform" value="0x0001" />
+            <IDSymbol name="cmdReverseTransform" value="0x0002" />
+            <IDSymbol name="cmdNormalizeTransform" value="0x0003" />
+            <IDSymbol name="cmdMd5Transform" value="0x0004" />
+            <IDSymbol name="cmdSha1Transform" value="0x0005" />
+            <IDSymbol name="cmdSha256Transform" value="0x0006" />
+            <IDSymbol name="cmdSha384Transform" value="0x0007" />
+            <IDSymbol name="cmdSha512Transform" value="0x0008" />
+        </GuidSymbol>
+
+        <GuidSymbol name="guidLinesCmdSet" value="{243f9ffe-bb22-44f7-bc28-75a5f69c6431}">
+            <IDSymbol name="LinesMenu" value="0x0001" />
+            <IDSymbol name="LinesMenuGroup" value="0x0002" />
+
+            <IDSymbol name="cmdSortAsc" value="0x0003" />
+            <IDSymbol name="cmdSortDesc" value="0x0004" />
+            <IDSymbol name="cmdRemoveDuplicateLines" value="0x0005" />
+            <IDSymbol name="cmdRemoveEmptyLines" value="0x0007" />
+        </GuidSymbol>
+
+        <!--Editor guids defined by Web Development Tools-->
+        <GuidSymbol name="HtmlCmdSet" value="{78F03954-2FB8-4087-8CE7-59D71710B3BB}" >
+            <IDSymbol name="htmlContextMenu" value="100" />
+        </GuidSymbol>
+        <GuidSymbol name="CssCmdSet" value="{64DA400E-B4AD-4D67-AA92-4B7ACB01ECD5}">
+            <IDSymbol name="CssContextMenu" value="100" />
+        </GuidSymbol>
+        <GuidSymbol name="JsonCmdSet" value="{F718CA06-CF4F-4A0C-9106-E79E9EE5E7CD}">
+            <IDSymbol name="JsonContextMenu" value="100" />
+        </GuidSymbol>
+    </Symbols>
+</CommandTable>

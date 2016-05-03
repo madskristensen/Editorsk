@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="a3112f81-e423-4f88-9f2c-e089a309e48e" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
-        <DisplayName>String Manipulation</DisplayName>
+        <DisplayName>Editorsk Text Enhancements</DisplayName>
         <Description xml:space="preserve">Provides additional features such as HTML and URL encodings, transformations and sorting of selected text the editor.</Description>
         <MoreInfo>https://github.com/madskristensen/Editorsk</MoreInfo>
         <License>Resources\LICENSE</License>

@@ -1,4 +1,4 @@
-# Editorsk
+# Editorsk Text Enhancements
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ft7r0hidvyl37d4b?svg=true)](https://ci.appveyor.com/project/madskristensen/editorsk)
 

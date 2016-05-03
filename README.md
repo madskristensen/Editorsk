@@ -2,8 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ft7r0hidvyl37d4b?svg=true)](https://ci.appveyor.com/project/madskristensen/editorsk)
 
-<!-- Update the VS Gallery link after you upload the VSIX-->
-Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/[GuidFromGallery])
+Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/4f64e542-3772-4136-8f87-0113441c7aa1)
 or get the [CI build](http://vsixgallery.com/extension/a3112f81-e423-4f88-9f2c-e089a309e48e/).
 
 ---------------------------------------

@@ -8,24 +8,44 @@ or get the [CI build](http://vsixgallery.com/extension/a3112f81-e423-4f88-9f2c-e
 
 ---------------------------------------
 
-Empty VSIX Project.
-
-See the [changelog](CHANGELOG.md) for changes and roadmap.
+Provides additional features such as HTML and URL encodings,
+transformations and sorting of selected text the editor.
 
 ## Features
 
-- Feature 1
-- Feature 2
-  - Sub feature
+- String encodings/decoding
+- String transformation
+- Hashing
+- Remove duplicate lines
+- Line sorting
 
-### Feature 1
-Describe feature 1. Add screenshots/code samples etc.
+## Edit menu
+The features are located in 3 menus under the top level 
+**Edit** menu.
 
-### Feature 2
-Describe feature 2. Add screenshots/code samples etc.
+![Edit menu](art/edit-menu.png)
 
-#### Sub feature
-Describe sub feature. Add screenshots/code samples etc.
+You can also find them in the context-menu inside the editor.
+
+### Encoding
+This is a collection of various encodings and decodings
+primarily used in HTML and XML documents and strings.
+
+![Encoding menu](art/encoding-sub-menu.png)
+
+### Transform
+Some simple commands to transform the selected strings.
+
+![Transform menu](art/transform-sub-menu.png)
+
+It even has some popular hashing algorithms handy.
+
+### Lines
+This gives you easy access to sort the selected lines
+alphabetically, as well as removing empty- and duplicate
+lines.
+
+![Lines menu](art/line-sub-menu.png)
 
 ## Contribute
 Check out the [contribution guidelines](.github/CONTRIBUTING.md)

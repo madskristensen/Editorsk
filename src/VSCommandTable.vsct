@@ -3,6 +3,7 @@
 
     <Extern href="stdidcmd.h"/>
     <Extern href="vsshlids.h"/>
+    <Include href="KnownImageIds.vsct"/>
 
     <Commands package="guidPackage">
         <Menus>
@@ -117,6 +118,8 @@
 
             <Button guid="guidTransformCmdSet" id="cmdReverseTransform" priority="0x0104" type="Button">
                 <Parent guid="guidTransformCmdSet" id="MiscTransformMenuGroup" />
+                <Icon guid="ImageCatalogGuid" id="Reverse"/>
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Reverse</ButtonText>
@@ -173,6 +176,8 @@
 
             <Button guid="guidLinesCmdSet" id="cmdSortAsc" priority="0x0105" type="Button">
                 <Parent guid="guidLinesCmdSet" id="LinesMenuGroup" />
+                <Icon guid="ImageCatalogGuid" id="SortAscending"/>
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Sort Ascending</ButtonText>
@@ -181,6 +186,8 @@
 
             <Button guid="guidLinesCmdSet" id="cmdSortDesc" priority="0x0106" type="Button">
                 <Parent guid="guidLinesCmdSet" id="LinesMenuGroup" />
+                <Icon guid="ImageCatalogGuid" id="SortDescending"/>
+                <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Sort Descending</ButtonText>

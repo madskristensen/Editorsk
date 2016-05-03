@@ -9,7 +9,7 @@ namespace Editorsk
     {
         public const string Id = "a3112f81-e423-4f88-9f2c-e089a309e48e";
         public const string Name = "Editorsk";
-        public const string Description = "Provides additional features encoding, tranforming and sorting selected text the editor.";
+        public const string Description = "Provides additional features such as HTML and URL encodings, transformations and sorting of selected text the editor.";
         public const string Language = "en-US";
         public const string Version = "1.0";
         public const string Author = "Mads Kristensen";

@@ -121,7 +121,7 @@
     <value>Editorsk</value>
   </data>
   <data name="112" xml:space="preserve">
-    <value>Provides additional features encoding, tranforming and sorting selected text the editor.</value>
+    <value>Provides additional features such as HTML and URL encodings, transformations and sorting of selected text the editor.</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="400" type="System.Resources.ResXFileRef, System.Windows.Forms">

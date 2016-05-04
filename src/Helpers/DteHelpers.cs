@@ -16,5 +16,10 @@ namespace Editorsk
             dte.UndoContext.Open(name);
             return new Disposable(dte.UndoContext.Close);
         }
+
+        public static string[] GetSelectedLines(this TextDocument document)
+        {
+            return document.Selection.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        }
     }
 }

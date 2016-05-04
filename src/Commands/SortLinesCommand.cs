@@ -32,21 +32,20 @@ namespace Editorsk
 
         private void SetupCommand(int command, Direction direction)
         {
-            CommandID commandId = new CommandID(PackageGuids.guidLinesCmdSet, command);
-            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Execute(direction), commandId);
+            var commandId = new CommandID(PackageGuids.guidLinesCmdSet, command);
+            var menuCommand = new OleMenuCommand((s, e) => Execute(direction), commandId);
             _mcs.AddCommand(menuCommand);
         }
 
         private void Execute(Direction direction)
         {
             var document = _dte.GetActiveTextDocument();
-            var text = document.Selection.Text;
-            var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (lines.Length == 0)
-                return;
+            var lines = document.GetSelectedLines();
 
             string result = SortLines(direction, lines);
+
+            if (result == document.Selection.Text)
+                return;
 
             using (_dte.Undo("Sort Selected Lines"))
             {

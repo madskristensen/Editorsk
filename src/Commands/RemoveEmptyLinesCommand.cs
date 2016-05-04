@@ -38,13 +38,12 @@ namespace Editorsk
         private void Execute()
         {
             var document = _dte.GetActiveTextDocument();
-            var text = document.Selection.Text;
-            var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-            if (lines.Length == 0)
-                return;
+            var lines = document.GetSelectedLines();
 
             string result = string.Join(Environment.NewLine, lines.Where(s => !string.IsNullOrWhiteSpace(s)));
+
+            if (result == document.Selection.Text)
+                return;
 
             using (_dte.Undo("Remove Empty Lines"))
             {

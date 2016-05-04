@@ -83,16 +83,15 @@ namespace Editorsk
 
         private void Replace(Replacement callback)
         {
-            TextDocument document = _dte.GetActiveTextDocument();
+            var document = _dte.GetActiveTextDocument();
+            string result = callback(document.Selection.Text);
 
-            if (document == null)
+            if (result == document.Selection.Text)
                 return;
-
-            string replacement = callback(document.Selection.Text);
 
             using (_dte.Undo(callback.Method.Name))
             {
-                document.Selection.Insert(replacement, 0);
+                document.Selection.Insert(result, 0);
             }
         }
     }

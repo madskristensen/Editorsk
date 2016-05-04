@@ -20,6 +20,7 @@ namespace Editorsk
         public const string HtmlCmdSetString = "78f03954-2fb8-4087-8ce7-59d71710b3bb";
         public const string CssCmdSetString = "64da400e-b4ad-4d67-aa92-4b7acb01ecd5";
         public const string JsonCmdSetString = "f718ca06-cf4f-4a0c-9106-e79e9ee5e7cd";
+        public const string guidXmlUiCmdsString = "fb87333b-16c8-400e-bc8f-f6b890410582";
         public static Guid guidPackage = new Guid(guidPackageString);
         public static Guid guidTopMenu = new Guid(guidTopMenuString);
         public static Guid guidEncodingCmdSet = new Guid(guidEncodingCmdSetString);
@@ -28,6 +29,7 @@ namespace Editorsk
         public static Guid HtmlCmdSet = new Guid(HtmlCmdSetString);
         public static Guid CssCmdSet = new Guid(CssCmdSetString);
         public static Guid JsonCmdSet = new Guid(JsonCmdSetString);
+        public static Guid guidXmlUiCmds = new Guid(guidXmlUiCmdsString);
     }
     /// <summary>
     /// Helper class that encapsulates all CommandIDs uses across VS Package.

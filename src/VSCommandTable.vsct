@@ -235,8 +235,13 @@
 
     <VisibilityConstraints>
         <VisibilityItem guid="guidEncodingCmdSet" id="EncodeMenu" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidEncodingCmdSet" id="EncodeMenu" context="guidXmlUiCmds" />
+
         <VisibilityItem guid="guidTransformCmdSet" id="TransformMenu" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidTransformCmdSet" id="TransformMenu" context="guidXmlUiCmds" />
+
         <VisibilityItem guid="guidLinesCmdSet" id="LinesMenu" context="GUID_TextEditorFactory" />
+        <VisibilityItem guid="guidLinesCmdSet" id="LinesMenu" context="guidXmlUiCmds" />
     </VisibilityConstraints>
 
     <KeyBindings>
@@ -301,5 +306,8 @@
         <GuidSymbol name="JsonCmdSet" value="{F718CA06-CF4F-4A0C-9106-E79E9EE5E7CD}">
             <IDSymbol name="JsonContextMenu" value="100" />
         </GuidSymbol>
+
+        <!-- XML editor guid -->
+        <GuidSymbol name="guidXmlUiCmds" value="{fb87333b-16c8-400e-bc8f-f6b890410582}"/>
     </Symbols>
 </CommandTable>

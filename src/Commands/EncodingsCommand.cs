@@ -30,8 +30,8 @@ namespace Editorsk
         private void SetupCommands()
         {
             SetupCommand(PackageIds.cmdHtmlEncode, new Replacement(HttpUtility.HtmlEncode));
-            SetupCommand(PackageIds.cmdHtmlDecode, new Replacement(HttpUtility.HtmlDecode));
             SetupCommand(PackageIds.cmdAttrEncode, new Replacement(HttpUtility.HtmlAttributeEncode));
+            SetupCommand(PackageIds.cmdHtmlDecode, new Replacement(HttpUtility.HtmlDecode));
             SetupCommand(PackageIds.cmdUrlEncode, new Replacement(HttpUtility.UrlEncode));
             SetupCommand(PackageIds.cmdUrlDecode, new Replacement(HttpUtility.UrlDecode));
             SetupCommand(PackageIds.cmdJavaScriptEncode, new Replacement(HttpUtility.JavaScriptStringEncode));

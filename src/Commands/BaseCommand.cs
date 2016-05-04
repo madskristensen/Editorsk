@@ -52,8 +52,18 @@ namespace Editorsk
 
         public IEnumerable<string> GetSelectedLines(TextDocument document)
         {
-            // TODO: Use document.Selection.TextRanges instead
-            return document.Selection.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            var firstLine = Math.Min(document.Selection.TopLine, document.Selection.BottomLine);
+            var lineCount = document.Selection.TextRanges.Count;
+
+            document.Selection.MoveToLineAndOffset(firstLine, 1);
+            document.Selection.LineDown(true, lineCount);
+            document.Selection.CharRight(true, -1);
+
+            for (int i = 1; i <= document.Selection.TextRanges.Count; i++)
+            {
+                var range = document.Selection.TextRanges.Item(i);
+                yield return range.StartPoint.GetText(range.EndPoint).TrimEnd();
+            }
         }
     }
 }

@@ -13,14 +13,14 @@ namespace Editorsk
 
         protected override void SetupCommands()
         {
-            SetupCommand(PackageIds.cmdTitleCaseTransform, new Replacement(x => CultureInfo.InvariantCulture.TextInfo.ToTitleCase(x)));
-            SetupCommand(PackageIds.cmdReverseTransform, new Replacement(x => new string(x.Reverse().ToArray())));
-            SetupCommand(PackageIds.cmdNormalizeTransform, new Replacement(x => RemoveDiacritics(x)));
-            SetupCommand(PackageIds.cmdMd5Transform, new Replacement(x => Hash(x, new MD5CryptoServiceProvider())));
-            SetupCommand(PackageIds.cmdSha1Transform, new Replacement(x => Hash(x, new SHA1CryptoServiceProvider())));
-            SetupCommand(PackageIds.cmdSha256Transform, new Replacement(x => Hash(x, new SHA256CryptoServiceProvider())));
-            SetupCommand(PackageIds.cmdSha384Transform, new Replacement(x => Hash(x, new SHA384CryptoServiceProvider())));
-            SetupCommand(PackageIds.cmdSha512Transform, new Replacement(x => Hash(x, new SHA512CryptoServiceProvider())));
+            SetupCommand(PackageIds.cmdTitleCase, new Replacement(x => CultureInfo.InvariantCulture.TextInfo.ToTitleCase(x)));
+            SetupCommand(PackageIds.cmdReverse, new Replacement(x => new string(x.Reverse().ToArray())));
+            SetupCommand(PackageIds.cmdNormalize, new Replacement(x => RemoveDiacritics(x)));
+            SetupCommand(PackageIds.cmdMd5, new Replacement(x => Hash(x, new MD5CryptoServiceProvider())));
+            SetupCommand(PackageIds.cmdSha1, new Replacement(x => Hash(x, new SHA1CryptoServiceProvider())));
+            SetupCommand(PackageIds.cmdSha256, new Replacement(x => Hash(x, new SHA256CryptoServiceProvider())));
+            SetupCommand(PackageIds.cmdSha384, new Replacement(x => Hash(x, new SHA384CryptoServiceProvider())));
+            SetupCommand(PackageIds.cmdSha512, new Replacement(x => Hash(x, new SHA512CryptoServiceProvider())));
         }
 
         private void SetupCommand(int commandId, Replacement callback)

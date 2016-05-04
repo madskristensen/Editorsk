@@ -112,7 +112,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdTitleCaseTransform" priority="0x0103" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdTitleCase" priority="0x0103" type="Button">
                 <Parent guid="guidTransformCmdSet" id="CasingTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -120,7 +120,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdReverseTransform" priority="0x0104" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdReverse" priority="0x0104" type="Button">
                 <Parent guid="guidTransformCmdSet" id="MiscTransformMenuGroup" />
                 <Icon guid="ImageCatalogGuid" id="Reverse"/>
                 <CommandFlag>IconIsMoniker</CommandFlag>
@@ -130,7 +130,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdNormalizeTransform" priority="0x0105" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdNormalize" priority="0x0105" type="Button">
                 <Parent guid="guidTransformCmdSet" id="MiscTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -138,7 +138,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdMd5Transform" priority="0x0105" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdMd5" priority="0x0105" type="Button">
                 <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -146,7 +146,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdSha1Transform" priority="0x0105" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdSha1" priority="0x0105" type="Button">
                 <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -154,7 +154,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdSha256Transform" priority="0x0105" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdSha256" priority="0x0105" type="Button">
                 <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -162,7 +162,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdSha384Transform" priority="0x0105" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdSha384" priority="0x0105" type="Button">
                 <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -170,7 +170,7 @@
                 </Strings>
             </Button>
 
-            <Button guid="guidTransformCmdSet" id="cmdSha512Transform" priority="0x0105" type="Button">
+            <Button guid="guidTransformCmdSet" id="cmdSha512" priority="0x0105" type="Button">
                 <Parent guid="guidTransformCmdSet" id="CryptoTransformMenuGroup" />
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
@@ -278,14 +278,14 @@
             <IDSymbol name="MiscTransformMenuGroup" value="0x0120" />
             <IDSymbol name="CryptoTransformMenuGroup" value="0x0130" />
 
-            <IDSymbol name="cmdTitleCaseTransform" value="0x0001" />
-            <IDSymbol name="cmdReverseTransform" value="0x0002" />
-            <IDSymbol name="cmdNormalizeTransform" value="0x0003" />
-            <IDSymbol name="cmdMd5Transform" value="0x0004" />
-            <IDSymbol name="cmdSha1Transform" value="0x0005" />
-            <IDSymbol name="cmdSha256Transform" value="0x0006" />
-            <IDSymbol name="cmdSha384Transform" value="0x0007" />
-            <IDSymbol name="cmdSha512Transform" value="0x0008" />
+            <IDSymbol name="cmdTitleCase" value="0x0001" />
+            <IDSymbol name="cmdReverse" value="0x0002" />
+            <IDSymbol name="cmdNormalize" value="0x0003" />
+            <IDSymbol name="cmdMd5" value="0x0004" />
+            <IDSymbol name="cmdSha1" value="0x0005" />
+            <IDSymbol name="cmdSha256" value="0x0006" />
+            <IDSymbol name="cmdSha384" value="0x0007" />
+            <IDSymbol name="cmdSha512" value="0x0008" />
         </GuidSymbol>
 
         <GuidSymbol name="guidLinesCmdSet" value="{243f9ffe-bb22-44f7-bc28-75a5f69c6431}">

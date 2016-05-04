@@ -42,7 +42,7 @@ namespace Editorsk
             SetupCommand(PackageIds.cmdSha512Transform, new Replacement(x => Hash(x, new SHA512CryptoServiceProvider())));
         }
 
-        public static string RemoveDiacritics(string s)
+        private static string RemoveDiacritics(string s)
         {
             string stFormD = s.Normalize(NormalizationForm.FormD);
             StringBuilder sb = new StringBuilder();
@@ -78,46 +78,21 @@ namespace Editorsk
         {
             CommandID commandId = new CommandID(PackageGuids.guidTransformCmdSet, command);
             OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Replace(callback), commandId);
-
-            menuCommand.BeforeQueryStatus += (s, e) =>
-            {
-                var document = GetTextDocument();
-
-                if (document == null)
-                    return;
-
-                string selection = document.Selection.Text;
-                menuCommand.Enabled = selection.Length > 0 && callback(selection) != selection;
-            };
-
             _mcs.AddCommand(menuCommand);
-        }
-
-        private TextDocument GetTextDocument()
-        {
-            if (_dte.ActiveDocument != null)
-                return _dte.ActiveDocument.Object("TextDocument") as TextDocument;
-
-            return null;
         }
 
         private void Replace(Replacement callback)
         {
-            TextDocument document = GetTextDocument();
+            TextDocument document = _dte.GetActiveTextDocument();
 
             if (document == null)
                 return;
 
             string replacement = callback(document.Selection.Text);
 
-            try
+            using (_dte.Undo(callback.Method.Name))
             {
-                _dte.UndoContext.Open(callback.Method.Name);
                 document.Selection.Insert(replacement, 0);
-            }
-            finally
-            {
-                _dte.UndoContext.Close();
             }
         }
     }

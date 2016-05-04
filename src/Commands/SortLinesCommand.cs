@@ -34,32 +34,12 @@ namespace Editorsk
         {
             CommandID commandId = new CommandID(PackageGuids.guidLinesCmdSet, command);
             OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Execute(direction), commandId);
-
-            menuCommand.BeforeQueryStatus += (s, e) =>
-            {
-                var document = GetTextDocument();
-
-                if (document == null)
-                    return;
-
-                string selection = document.Selection.Text;
-                menuCommand.Enabled = selection.Length > 0;
-            };
-
             _mcs.AddCommand(menuCommand);
-        }
-
-        private TextDocument GetTextDocument()
-        {
-            if (_dte.ActiveDocument != null)
-                return _dte.ActiveDocument.Object("TextDocument") as TextDocument;
-
-            return null;
         }
 
         private void Execute(Direction direction)
         {
-            var document = GetTextDocument();
+            var document = _dte.GetActiveTextDocument();
             var text = document.Selection.Text;
             var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -68,14 +48,9 @@ namespace Editorsk
 
             string result = SortLines(direction, lines);
 
-            try
+            using (_dte.Undo("Sort Selected Lines"))
             {
-                _dte.UndoContext.Open("Sort Selected Lines");
                 document.Selection.Insert(result, 0);
-            }
-            finally
-            {
-                _dte.UndoContext.Close();
             }
         }
 

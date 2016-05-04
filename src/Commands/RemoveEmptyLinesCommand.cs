@@ -32,32 +32,12 @@ namespace Editorsk
         {
             CommandID commandId = new CommandID(PackageGuids.guidLinesCmdSet, command);
             OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Execute(), commandId);
-
-            menuCommand.BeforeQueryStatus += (s, e) =>
-            {
-                var document = GetTextDocument();
-
-                if (document == null)
-                    return;
-
-                string selection = document.Selection.Text;
-                menuCommand.Enabled = selection.Length > 0;
-            };
-
             _mcs.AddCommand(menuCommand);
-        }
-
-        private TextDocument GetTextDocument()
-        {
-            if (_dte.ActiveDocument != null)
-                return _dte.ActiveDocument.Object("TextDocument") as TextDocument;
-
-            return null;
         }
 
         private void Execute()
         {
-            var document = GetTextDocument();
+            var document = _dte.GetActiveTextDocument();
             var text = document.Selection.Text;
             var lines = text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -66,14 +46,9 @@ namespace Editorsk
 
             string result = string.Join(Environment.NewLine, lines.Where(s => !string.IsNullOrWhiteSpace(s)));
 
-            try
+            using (_dte.Undo("Remove Empty Lines"))
             {
-                _dte.UndoContext.Open("Remove Empty Lines");
                 document.Selection.Insert(result, 0);
-            }
-            finally
-            {
-                _dte.UndoContext.Close();
             }
         }
     }

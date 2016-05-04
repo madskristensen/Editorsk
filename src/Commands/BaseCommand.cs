@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Design;
 using EnvDTE;
 using EnvDTE80;
@@ -10,7 +11,8 @@ namespace Editorsk
     {
         public static T Instance { get; private set; }
         public DTE2 DTE { get; private set; }
-        public OleMenuCommandService CommandService { get; private set; }
+
+        private OleMenuCommandService CommandService { get; set; }
 
         public static void Initialize(IServiceProvider serviceProvider)
         {
@@ -25,6 +27,18 @@ namespace Editorsk
 
         protected abstract void SetupCommands();
 
+        protected void RegisterCommand(CommandID commandId, Action action)
+        {
+            var menuCommand = new OleMenuCommand((s, e) => action(), commandId);
+            CommandService.AddCommand(menuCommand);
+        }
+
+        protected void RegisterCommand(Guid commandGuid, int commandId, Action action)
+        {
+            var cmd = new CommandID(commandGuid, commandId);
+            RegisterCommand(cmd, action);
+        }
+
         public TextDocument GetTextDocument()
         {
             return DTE.ActiveDocument?.Object("TextDocument") as TextDocument;
@@ -36,8 +50,9 @@ namespace Editorsk
             return new Disposable(DTE.UndoContext.Close);
         }
 
-        public string[] GetSelectedLines(TextDocument document)
+        public IEnumerable<string> GetSelectedLines(TextDocument document)
         {
+            // TODO: Use document.Selection.TextRanges instead
             return document.Selection.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         }
     }

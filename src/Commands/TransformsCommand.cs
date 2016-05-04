@@ -23,11 +23,9 @@ namespace Editorsk
             SetupCommand(PackageIds.cmdSha512Transform, new Replacement(x => Hash(x, new SHA512CryptoServiceProvider())));
         }
 
-        private void SetupCommand(int command, Replacement callback)
+        private void SetupCommand(int commandId, Replacement callback)
         {
-            CommandID commandId = new CommandID(PackageGuids.guidTransformCmdSet, command);
-            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Replace(callback), commandId);
-            CommandService.AddCommand(menuCommand);
+            RegisterCommand(PackageGuids.guidTransformCmdSet, commandId, () => Execute(callback));
         }
 
         private static string RemoveDiacritics(string s)
@@ -62,7 +60,7 @@ namespace Editorsk
             return sb.ToString();
         }
 
-        private void Replace(Replacement callback)
+        private void Execute(Replacement callback)
         {
             var document = GetTextDocument();
             string result = callback(document.Selection.Text);

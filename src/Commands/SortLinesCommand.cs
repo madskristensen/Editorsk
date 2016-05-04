@@ -12,15 +12,11 @@ namespace Editorsk
 
         protected override void SetupCommands()
         {
-            SetupCommand(PackageIds.cmdSortAsc, Direction.Ascending);
-            SetupCommand(PackageIds.cmdSortDesc, Direction.Descending);
-        }
+            var cmdAsc = new CommandID(PackageGuids.guidLinesCmdSet, PackageIds.cmdSortAsc);
+            RegisterCommand(cmdAsc, () => Execute(Direction.Ascending));
 
-        private void SetupCommand(int command, Direction direction)
-        {
-            var commandId = new CommandID(PackageGuids.guidLinesCmdSet, command);
-            var menuCommand = new OleMenuCommand((s, e) => Execute(direction), commandId);
-            CommandService.AddCommand(menuCommand);
+            var cmdDesc = new CommandID(PackageGuids.guidLinesCmdSet, PackageIds.cmdSortDesc);
+            RegisterCommand(cmdDesc, () => Execute(Direction.Descending));
         }
 
         private void Execute(Direction direction)

@@ -11,9 +11,7 @@ namespace Editorsk
 
         protected override void SetupCommands()
         {
-            CommandID commandId = new CommandID(PackageGuids.guidLinesCmdSet, PackageIds.cmdRemoveEmptyLines);
-            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Execute(), commandId);
-            CommandService.AddCommand(menuCommand);
+            RegisterCommand(PackageGuids.guidLinesCmdSet, PackageIds.cmdRemoveEmptyLines, Execute);
         }
 
         private void Execute()

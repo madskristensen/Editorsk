@@ -7,13 +7,9 @@ namespace Editorsk
 {
     internal class RemoveDuplicateLinesCommand : BaseCommand<RemoveDuplicateLinesCommand>
     {
-        private delegate void Replacement(Direction direction);
-
         protected override void SetupCommands()
         {
-            CommandID commandId = new CommandID(PackageGuids.guidLinesCmdSet, PackageIds.cmdRemoveDuplicateLines);
-            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Execute(), commandId);
-            CommandService.AddCommand(menuCommand);
+            RegisterCommand(PackageGuids.guidLinesCmdSet, PackageIds.cmdRemoveDuplicateLines, Execute);
         }
 
         private void Execute()

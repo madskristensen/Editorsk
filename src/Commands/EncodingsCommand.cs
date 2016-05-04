@@ -18,14 +18,12 @@ namespace Editorsk
             SetupCommand(PackageIds.cmdJavaScriptEncode, new Replacement(HttpUtility.JavaScriptStringEncode));
         }
 
-        private void SetupCommand(int command, Replacement callback)
+        private void SetupCommand(int commandId, Replacement callback)
         {
-            CommandID commandId = new CommandID(PackageGuids.guidEncodingCmdSet, command);
-            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Replace(callback), commandId);
-            CommandService.AddCommand(menuCommand);
+            RegisterCommand(PackageGuids.guidEncodingCmdSet, commandId, () => Execute(callback));
         }
 
-        private void Replace(Replacement callback)
+        private void Execute(Replacement callback)
         {
             var document = GetTextDocument();
             string result = callback(document.Selection.Text);

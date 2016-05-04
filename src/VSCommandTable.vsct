@@ -245,8 +245,10 @@
     </VisibilityConstraints>
 
     <KeyBindings>
-        <KeyBinding guid="guidLinesCmdSet" id="cmdSortAsc" mod1="Alt" key1="3" editor="guidVSStd97"/>
-        <KeyBinding guid="guidLinesCmdSet" id="cmdSortDesc" mod1="Alt" key1="4" editor="guidVSStd97"/>
+        <KeyBinding guid="guidLinesCmdSet" id="cmdSortAsc" mod1="Alt" key1="L" mod2="Alt" key2="A" editor="guidVSStd97"/>
+        <KeyBinding guid="guidLinesCmdSet" id="cmdSortDesc" mod1="Alt" key1="L" mod2="Alt" key2="D" editor="guidVSStd97"/>
+        <KeyBinding guid="guidLinesCmdSet" id="cmdRemoveDuplicateLines" mod1="Alt" key1="R" mod2="Alt" key2="D" editor="guidVSStd97"/>
+        <KeyBinding guid="guidLinesCmdSet" id="cmdRemoveEmptyLines" mod1="Alt" key1="R" mod2="Alt" key2="E" editor="guidVSStd97"/>
     </KeyBindings>
 
     <Symbols>

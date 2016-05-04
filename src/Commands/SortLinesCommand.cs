@@ -2,52 +2,38 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
-using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {
-    internal class SortLinesCommand
+    internal class SortLinesCommand : BaseCommand<SortLinesCommand>
     {
-        private DTE2 _dte;
-        private OleMenuCommandService _mcs;
         private delegate void Replacement(Direction direction);
 
-        private SortLinesCommand(IServiceProvider serviceProvider)
+        protected override void SetupCommands()
         {
-            _dte = (DTE2)serviceProvider.GetService(typeof(DTE));
-            _mcs = serviceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-
             SetupCommand(PackageIds.cmdSortAsc, Direction.Ascending);
             SetupCommand(PackageIds.cmdSortDesc, Direction.Descending);
-        }
-
-        public static SortLinesCommand Instance { get; set; }
-
-        public static void Initialize(IServiceProvider serviceProvider)
-        {
-            Instance = new SortLinesCommand(serviceProvider);
         }
 
         private void SetupCommand(int command, Direction direction)
         {
             var commandId = new CommandID(PackageGuids.guidLinesCmdSet, command);
             var menuCommand = new OleMenuCommand((s, e) => Execute(direction), commandId);
-            _mcs.AddCommand(menuCommand);
+            CommandService.AddCommand(menuCommand);
         }
 
         private void Execute(Direction direction)
         {
-            var document = _dte.GetActiveTextDocument();
-            var lines = document.GetSelectedLines();
+            var document = GetTextDocument();
+            var lines = GetSelectedLines(document);
 
             string result = SortLines(direction, lines);
 
             if (result == document.Selection.Text)
                 return;
 
-            using (_dte.Undo("Sort Selected Lines"))
+            using (UndoContext("Sort Selected Lines"))
             {
                 document.Selection.Insert(result, 0);
             }

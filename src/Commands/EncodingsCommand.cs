@@ -1,33 +1,14 @@
-using System;
 using System.ComponentModel.Design;
 using System.Web;
-using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {
-    internal class EncodingCommand
+    internal class EncodingCommand : BaseCommand<EncodingCommand>
     {
-        private DTE2 _dte;
-        private OleMenuCommandService _mcs;
         private delegate string Replacement(string original);
 
-        private EncodingCommand(IServiceProvider serviceProvider)
-        {
-            _dte = (DTE2)serviceProvider.GetService(typeof(DTE));
-            _mcs = serviceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            SetupCommands();
-        }
-
-        public static EncodingCommand Instance { get; set; }
-
-        public static void Initialize(IServiceProvider serviceProvider)
-        {
-            Instance = new EncodingCommand(serviceProvider);
-        }
-
-        private void SetupCommands()
+        protected override void SetupCommands()
         {
             SetupCommand(PackageIds.cmdHtmlEncode, new Replacement(HttpUtility.HtmlEncode));
             SetupCommand(PackageIds.cmdAttrEncode, new Replacement(HttpUtility.HtmlAttributeEncode));
@@ -41,18 +22,18 @@ namespace Editorsk
         {
             CommandID commandId = new CommandID(PackageGuids.guidEncodingCmdSet, command);
             OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Replace(callback), commandId);
-            _mcs.AddCommand(menuCommand);
+            CommandService.AddCommand(menuCommand);
         }
 
         private void Replace(Replacement callback)
         {
-            var document = _dte.GetActiveTextDocument();
+            var document = GetTextDocument();
             string result = callback(document.Selection.Text);
 
             if (result == document.Selection.Text)
                 return;
 
-            using (_dte.Undo(callback.Method.Name))
+            using (UndoContext(callback.Method.Name))
             {
                 document.Selection.Insert(result, 0);
             }

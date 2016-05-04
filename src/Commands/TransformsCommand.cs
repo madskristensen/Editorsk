@@ -1,36 +1,17 @@
-using System;
 using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using EnvDTE;
-using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {
-    internal class TransformCommand
+    internal class TransformCommand : BaseCommand<TransformCommand>
     {
-        private DTE2 _dte;
-        private OleMenuCommandService _mcs;
         private delegate string Replacement(string original);
 
-        private TransformCommand(IServiceProvider serviceProvider)
-        {
-            _dte = (DTE2)serviceProvider.GetService(typeof(DTE));
-            _mcs = serviceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            SetupCommands();
-        }
-
-        public static TransformCommand Instance { get; set; }
-
-        public static void Initialize(IServiceProvider serviceProvider)
-        {
-            Instance = new TransformCommand(serviceProvider);
-        }
-
-        public void SetupCommands()
+        protected override void SetupCommands()
         {
             SetupCommand(PackageIds.cmdTitleCaseTransform, new Replacement(x => CultureInfo.InvariantCulture.TextInfo.ToTitleCase(x)));
             SetupCommand(PackageIds.cmdReverseTransform, new Replacement(x => new string(x.Reverse().ToArray())));
@@ -40,6 +21,13 @@ namespace Editorsk
             SetupCommand(PackageIds.cmdSha256Transform, new Replacement(x => Hash(x, new SHA256CryptoServiceProvider())));
             SetupCommand(PackageIds.cmdSha384Transform, new Replacement(x => Hash(x, new SHA384CryptoServiceProvider())));
             SetupCommand(PackageIds.cmdSha512Transform, new Replacement(x => Hash(x, new SHA512CryptoServiceProvider())));
+        }
+
+        private void SetupCommand(int command, Replacement callback)
+        {
+            CommandID commandId = new CommandID(PackageGuids.guidTransformCmdSet, command);
+            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Replace(callback), commandId);
+            CommandService.AddCommand(menuCommand);
         }
 
         private static string RemoveDiacritics(string s)
@@ -74,22 +62,15 @@ namespace Editorsk
             return sb.ToString();
         }
 
-        private void SetupCommand(int command, Replacement callback)
-        {
-            CommandID commandId = new CommandID(PackageGuids.guidTransformCmdSet, command);
-            OleMenuCommand menuCommand = new OleMenuCommand((s, e) => Replace(callback), commandId);
-            _mcs.AddCommand(menuCommand);
-        }
-
         private void Replace(Replacement callback)
         {
-            var document = _dte.GetActiveTextDocument();
+            var document = GetTextDocument();
             string result = callback(document.Selection.Text);
 
             if (result == document.Selection.Text)
                 return;
 
-            using (_dte.Undo(callback.Method.Name))
+            using (UndoContext(callback.Method.Name))
             {
                 document.Selection.Insert(result, 0);
             }

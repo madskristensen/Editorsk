@@ -52,12 +52,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\EncodingsCommand.cs" />
     <Compile Include="Commands\RemoveDuplicateLinesCommand.cs" />
     <Compile Include="Commands\RemoveEmptyLinesCommand.cs" />
     <Compile Include="Commands\SortLinesCommand.cs" />
     <Compile Include="Helpers\Disposable.cs" />
-    <Compile Include="Helpers\DteHelpers.cs" />
     <Compile Include="Helpers\LineComparer.cs" />
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>

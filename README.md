@@ -27,20 +27,20 @@ The features are located in 3 menus under the top level
 
 You can also find them in the context-menu inside the editor.
 
-### Encoding
+### Encode Selection
 This is a collection of various encodings and decodings
 primarily used in HTML and XML documents and strings.
 
 ![Encoding menu](art/encoding-sub-menu.png)
 
-### Transform
+### Transform Selection
 Some simple commands to transform the selected strings.
 
 ![Transform menu](art/transform-sub-menu.png)
 
 It even has some popular hashing algorithms handy.
 
-### Lines
+### Selected Lines
 This gives you easy access to sort the selected lines
 alphabetically, as well as removing empty- and duplicate
 lines.

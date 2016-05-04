@@ -8,7 +8,7 @@ or get the [CI build](http://vsixgallery.com/extension/a3112f81-e423-4f88-9f2c-e
 ---------------------------------------
 
 Provides additional features such as HTML and URL encodings,
-transformations and sorting of selected text the editor.
+transformations and sorting of selected text the editor.W
 
 ## Features
 
@@ -16,6 +16,7 @@ transformations and sorting of selected text the editor.
 - String transformation
 - Hashing
 - Remove duplicate lines
+- Remove empty lines
 - Line sorting
 
 ## Edit menu

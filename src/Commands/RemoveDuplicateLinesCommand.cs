@@ -14,17 +14,24 @@ namespace Editorsk
 
         private void Execute()
         {
-            var document = GetTextDocument();
-            var lines = GetSelectedLines(document);
-
-            string result = string.Join(Environment.NewLine, lines.Distinct(new LineComparer()));
-
-            if (result == document.Selection.Text)
-                return;
-
-            using (UndoContext("Remove Duplicate Lines"))
+            try
             {
-                document.Selection.Insert(result, 0);
+                var document = GetTextDocument();
+                var lines = GetSelectedLines(document);
+
+                string result = string.Join(Environment.NewLine, lines.Distinct(new LineComparer()));
+
+                if (result == document.Selection.Text)
+                    return;
+
+                using (UndoContext("Remove Duplicate Lines"))
+                {
+                    document.Selection.Insert(result, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
             }
         }
     }

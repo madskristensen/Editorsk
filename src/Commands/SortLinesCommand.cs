@@ -21,17 +21,24 @@ namespace Editorsk
 
         private void Execute(Direction direction)
         {
-            var document = GetTextDocument();
-            var lines = GetSelectedLines(document);
-
-            string result = SortLines(direction, lines);
-
-            if (result == document.Selection.Text)
-                return;
-
-            using (UndoContext("Sort Selected Lines"))
+            try
             {
-                document.Selection.Insert(result, 0);
+                var document = GetTextDocument();
+                var lines = GetSelectedLines(document);
+
+                string result = SortLines(direction, lines);
+
+                if (result == document.Selection.Text)
+                    return;
+
+                using (UndoContext("Sort Selected Lines"))
+                {
+                    document.Selection.Insert(result, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
             }
         }
 

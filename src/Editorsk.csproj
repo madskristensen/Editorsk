@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\EncodingsCommand.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="Commands\RemoveDuplicateLinesCommand.cs" />
     <Compile Include="Commands\RemoveEmptyLinesCommand.cs" />
     <Compile Include="Commands\SortLinesCommand.cs" />

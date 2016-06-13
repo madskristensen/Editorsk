@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.Design;
 using System.Globalization;
 using System.Linq;
@@ -62,15 +63,22 @@ namespace Editorsk
 
         private void Execute(Replacement callback)
         {
-            var document = GetTextDocument();
-            string result = callback(document.Selection.Text);
-
-            if (result == document.Selection.Text)
-                return;
-
-            using (UndoContext(callback.Method.Name))
+            try
             {
-                document.Selection.Insert(result, 0);
+                var document = GetTextDocument();
+                string result = callback(document.Selection.Text);
+
+                if (result == document.Selection.Text)
+                    return;
+
+                using (UndoContext(callback.Method.Name))
+                {
+                    document.Selection.Insert(result, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
             }
         }
     }

@@ -16,17 +16,24 @@ namespace Editorsk
 
         private void Execute()
         {
-            var document = GetTextDocument();
-            var lines = GetSelectedLines(document);
-
-            string result = string.Join(Environment.NewLine, lines.Where(s => !string.IsNullOrWhiteSpace(s)));
-
-            if (result == document.Selection.Text)
-                return;
-
-            using (UndoContext("Remove Empty Lines"))
+            try
             {
-                document.Selection.Insert(result, 0);
+                var document = GetTextDocument();
+                var lines = GetSelectedLines(document);
+
+                string result = string.Join(Environment.NewLine, lines.Where(s => !string.IsNullOrWhiteSpace(s)));
+
+                if (result == document.Selection.Text)
+                    return;
+
+                using (UndoContext("Remove Empty Lines"))
+                {
+                    document.Selection.Insert(result, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
             }
         }
     }

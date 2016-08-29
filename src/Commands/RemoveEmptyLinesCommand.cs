@@ -1,7 +1,5 @@
 using System;
-using System.ComponentModel.Design;
 using System.Linq;
-using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {

@@ -13,6 +13,8 @@ namespace Editorsk
     {
         protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
+            await Logger.InitializeAsync(this, Vsix.Name);
+
             await EncodingCommand.Initialize(this);
             await TransformCommand.Initialize(this);
             await SortLinesCommand.Initialize(this);

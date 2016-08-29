@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Editorsk
 {
-    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(PackageGuids.guidPackageString)]
-    public sealed class VSPackage : Package
+    public sealed class VSPackage : AsyncPackage
     {
-        protected override void Initialize()
+        protected override async System.Threading.Tasks.Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            EncodingCommand.Initialize(this);
-            TransformCommand.Initialize(this);
-            SortLinesCommand.Initialize(this);
-            RemoveEmptyLinesCommand.Initialize(this);
-            RemoveDuplicateLinesCommand.Initialize(this);
-
-            base.Initialize();
+            await EncodingCommand.Initialize(this);
+            await TransformCommand.Initialize(this);
+            await SortLinesCommand.Initialize(this);
+            await RemoveEmptyLinesCommand.Initialize(this);
+            await RemoveDuplicateLinesCommand.Initialize(this);
         }
     }
 }

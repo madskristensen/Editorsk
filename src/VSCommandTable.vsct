@@ -300,13 +300,13 @@
 
         <!--Editor guids defined by Web Development Tools-->
         <GuidSymbol name="HtmlCmdSet" value="{78F03954-2FB8-4087-8CE7-59D71710B3BB}" >
-            <IDSymbol name="htmlContextMenu" value="100" />
+            <IDSymbol name="htmlContextMenu" value="1" />
         </GuidSymbol>
         <GuidSymbol name="CssCmdSet" value="{64DA400E-B4AD-4D67-AA92-4B7ACB01ECD5}">
-            <IDSymbol name="CssContextMenu" value="100" />
+            <IDSymbol name="CssContextMenu" value="2" />
         </GuidSymbol>
         <GuidSymbol name="JsonCmdSet" value="{F718CA06-CF4F-4A0C-9106-E79E9EE5E7CD}">
-            <IDSymbol name="JsonContextMenu" value="100" />
+            <IDSymbol name="JsonContextMenu" value="3" />
         </GuidSymbol>
 
         <!-- XML editor guid -->

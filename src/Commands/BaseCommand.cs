@@ -14,12 +14,12 @@ namespace Editorsk
 
         private OleMenuCommandService CommandService { get; set; }
 
-        public static async System.Threading.Tasks.Task Initialize(AsyncPackage package)
+        public static void Initialize(DTE2 dte, OleMenuCommandService commandService)
         {
             Instance = new T
             {
-                DTE = await package.GetServiceAsync(typeof(DTE)) as DTE2,
-                CommandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService
+                DTE = dte,
+                CommandService = commandService
             };
 
             Instance.SetupCommands();

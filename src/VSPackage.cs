@@ -1,6 +1,9 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Threading;
+using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
@@ -15,11 +18,14 @@ namespace Editorsk
         {
             await Logger.InitializeAsync(this, Vsix.Name);
 
-            await EncodingCommand.Initialize(this);
-            await TransformCommand.Initialize(this);
-            await SortLinesCommand.Initialize(this);
-            await RemoveEmptyLinesCommand.Initialize(this);
-            await RemoveDuplicateLinesCommand.Initialize(this);
+            var dte = await GetServiceAsync(typeof(DTE)) as DTE2;
+            var commandService = await GetServiceAsync(typeof(IMenuCommandService)) as OleMenuCommandService;
+
+            EncodingCommand.Initialize(dte, commandService);
+            TransformCommand.Initialize(dte, commandService);
+            SortLinesCommand.Initialize(dte, commandService);
+            RemoveEmptyLinesCommand.Initialize(dte, commandService);
+            RemoveDuplicateLinesCommand.Initialize(dte, commandService);
         }
     }
 }

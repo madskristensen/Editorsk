@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using EnvDTE;
+using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {
@@ -20,10 +22,12 @@ namespace Editorsk
 
         private void Execute(Direction direction)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             try
             {
-                var document = GetTextDocument();
-                var lines = GetSelectedLines(document);
+                TextDocument document = GetTextDocument();
+                IEnumerable<string> lines = GetSelectedLines(document);
 
                 string result = SortLines(direction, lines);
 

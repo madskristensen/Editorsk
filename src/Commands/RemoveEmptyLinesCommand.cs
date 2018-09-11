@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using EnvDTE;
+using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {
@@ -14,10 +17,12 @@ namespace Editorsk
 
         private void Execute()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             try
             {
-                var document = GetTextDocument();
-                var lines = GetSelectedLines(document);
+                TextDocument document = GetTextDocument();
+                IEnumerable<string> lines = GetSelectedLines(document);
 
                 string result = string.Join(Environment.NewLine, lines.Where(s => !string.IsNullOrWhiteSpace(s)));
 

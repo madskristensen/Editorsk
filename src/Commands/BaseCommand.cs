@@ -41,19 +41,24 @@ namespace Editorsk
 
         public TextDocument GetTextDocument()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             return DTE.ActiveDocument?.Object("TextDocument") as TextDocument;
         }
 
         public IDisposable UndoContext(string name)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             DTE.UndoContext.Open(name);
             return new Disposable(DTE.UndoContext.Close);
         }
 
         public IEnumerable<string> GetSelectedLines(TextDocument document)
         {
-            var firstLine = Math.Min(document.Selection.TopLine, document.Selection.BottomLine);
-            var lineCount = document.Selection.TextRanges.Count;
+            ThreadHelper.ThrowIfNotOnUIThread();
+
+            int firstLine = Math.Min(document.Selection.TopLine, document.Selection.BottomLine);
+            int lineCount = document.Selection.TextRanges.Count;
 
             document.Selection.MoveToLineAndOffset(firstLine, 1);
             document.Selection.LineDown(true, lineCount);
@@ -61,7 +66,7 @@ namespace Editorsk
 
             for (int i = 1; i <= document.Selection.TextRanges.Count; i++)
             {
-                var range = document.Selection.TextRanges.Item(i);
+                TextRange range = document.Selection.TextRanges.Item(i);
                 yield return range.StartPoint.GetText(range.EndPoint).TrimEnd();
             }
         }

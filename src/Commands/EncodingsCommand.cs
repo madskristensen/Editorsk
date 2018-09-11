@@ -1,5 +1,7 @@
 using System;
 using System.Web;
+using EnvDTE;
+using Microsoft.VisualStudio.Shell;
 
 namespace Editorsk
 {
@@ -24,9 +26,11 @@ namespace Editorsk
 
         private void Execute(Replacement callback)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             try
             {
-                var document = GetTextDocument();
+                TextDocument document = GetTextDocument();
                 string result = callback(document.Selection.Text);
 
                 if (result == document.Selection.Text)

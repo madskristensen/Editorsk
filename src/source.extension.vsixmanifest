@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="a3112f81-e423-4f88-9f2c-e089a309e48e" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
+    <Identity Id="13a2ec1a-6b20-46a9-af99-b1064b00c9a8" Version="1.0" Language="en-US" Publisher="Mads Kristensen" />
     <DisplayName>Editor Enhancements</DisplayName>
     <Description xml:space="preserve">Provides additional features such as HTML and URL encodings, transformations and sorting of selected text the editor.</Description>
     <MoreInfo>https://github.com/madskristensen/Editorsk</MoreInfo>
@@ -11,7 +11,9 @@
     <Tags>editor, strings, lines, encoding</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,17.0)" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
   </Installation>
   <Prerequisites>
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
